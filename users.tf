@@ -15,3 +15,15 @@ resource "keycloak_user" "users" {
     temporary = true
   }
 }
+
+resource "keycloak_user_groups" "user_groups" {
+  for_each = local.users
+
+  realm_id = keycloak_realm.example.id
+  user_id  = keycloak_user.users[each.key].id
+
+  group_ids = [
+    for group in each.value.groups :
+    keycloak_group.groups[group].id
+  ]
+}
