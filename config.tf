@@ -5,7 +5,7 @@ locals {
       first_name = "Ondrej"
       last_name  = "Sika"
       enabled    = true
-      groups     = ["admins"]
+      groups     = ["admins", "editors", "viewers"]
       department = "IT"
     }
     "vojtech" = {
@@ -13,7 +13,23 @@ locals {
       first_name = "Vojtech"
       last_name  = "Mares"
       enabled    = true
-      groups     = ["editors"]
+      groups     = ["editors", "viewers"]
+      department = "Support"
+    }
+    "alice" = {
+      email      = "alice@example.com"
+      first_name = "Alice"
+      last_name  = "A"
+      enabled    = true
+      groups     = ["viewers"]
+      department = "Support"
+    }
+    "bob" = {
+      email      = "bob@example.com"
+      first_name = "Bob"
+      last_name  = "B"
+      enabled    = true
+      groups     = []
       department = "Support"
     }
   }
