@@ -10,7 +10,7 @@ locals {
       email      = "vojtech@example.com"
       first_name = "Vojtech"
       last_name  = "Mares"
-      enabled    = false
+      enabled    = true
     }
   }
 }
