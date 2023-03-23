@@ -6,6 +6,7 @@ locals {
       last_name  = "Sika"
       enabled    = true
       groups     = ["admins"]
+      department = "IT"
     }
     "vojtech" = {
       email      = "vojtech@example.com"
@@ -13,6 +14,7 @@ locals {
       last_name  = "Mares"
       enabled    = true
       groups     = ["editors"]
+      department = "Support"
     }
   }
 }

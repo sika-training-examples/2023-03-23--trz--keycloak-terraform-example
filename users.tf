@@ -10,6 +10,10 @@ resource "keycloak_user" "users" {
   first_name     = each.value.first_name
   last_name      = each.value.last_name
 
+  attributes = {
+    department = each.value.department
+  }
+
   initial_password {
     value     = "a"
     temporary = true
