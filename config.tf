@@ -18,12 +18,24 @@ locals {
 }
 
 locals {
+  roles = {
+    "foo-editor" = {}
+    "foo-viewer" = {}
+    "bar-editor" = {}
+    "bar-viewer" = {}
+  }
+}
+
+locals {
   groups = {
     "admins" = {
+      roles = ["foo-editor", "bar-editor"]
     }
     "editors" = {
+      roles = ["foo-editor", "bar-editor"]
     }
     "viewers" = {
+      roles = ["foo-viewer", "bar-viewer"]
     }
   }
 }
