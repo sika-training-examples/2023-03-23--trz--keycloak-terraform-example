@@ -33,3 +33,11 @@ resource "keycloak_realm" "example" {
     }
   }
 }
+
+resource "keycloak_required_action" "otp" {
+  realm_id       = keycloak_realm.example.id
+  alias          = "CONFIGURE_TOTP"
+  enabled        = true
+  default_action = true
+  name           = "Require TOTP"
+}
