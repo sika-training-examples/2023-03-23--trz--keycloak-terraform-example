@@ -6,9 +6,11 @@ terraform {
   }
 }
 
+variable "keycloak_url" {}
+
 provider "keycloak" {
   client_id = "admin-cli"
-  url       = "http://localhost:8080"
+  url       = var.keycloak_url
   username  = "admin"
   password  = "admin"
 }
