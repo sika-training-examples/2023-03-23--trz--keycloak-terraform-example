@@ -34,6 +34,20 @@ resource "keycloak_realm" "example" {
   }
 }
 
+resource "keycloak_realm_events" "example" {
+  realm_id = keycloak_realm.example.id
+
+  events_enabled               = true
+  admin_events_enabled         = true
+  admin_events_details_enabled = true
+
+  enabled_event_types = []
+
+  events_listeners = [
+    "jboss-logging",
+  ]
+}
+
 resource "keycloak_openid_client_scope" "groups" {
   realm_id               = keycloak_realm.example.id
   name                   = "groups"
