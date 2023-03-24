@@ -60,6 +60,7 @@ resource "keycloak_openid_client_default_scopes" "example" {
   default_scopes = [
     "profile",
     "email",
+    "roles",
     keycloak_openid_client_scope.department.name,
   ]
 }
