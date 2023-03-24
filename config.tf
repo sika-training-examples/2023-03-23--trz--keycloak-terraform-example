@@ -7,6 +7,8 @@ locals {
       enabled    = true
       group_ids = [
         module.group--admins.id,
+        module.group--editors.id,
+        module.group--viewers.id,
       ]
       department = "IT"
     }
@@ -16,9 +18,28 @@ locals {
       last_name  = "Mares"
       enabled    = true
       group_ids = [
+        module.group--editors.id,
         module.group--viewers.id,
       ]
       department = "Support"
+    }
+    "alice" = {
+      email      = "alice@example.com"
+      first_name = "Alice"
+      last_name  = "Demo"
+      enabled    = true
+      group_ids = [
+        module.group--viewers.id,
+      ]
+      department = "Office"
+    }
+    "bob" = {
+      email      = "bob@example.com"
+      first_name = "Bob"
+      last_name  = "Demo"
+      enabled    = true
+      group_ids  = []
+      department = "Trainee"
     }
   }
 }
