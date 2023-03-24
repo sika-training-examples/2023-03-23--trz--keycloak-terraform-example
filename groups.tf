@@ -9,6 +9,14 @@ module "group--admins" {
   ]
 }
 
+module "group--editors" {
+  source = "./modules/group"
+
+  realm_id = keycloak_realm.example.id
+  name     = "editors"
+  role_ids = []
+}
+
 module "group--viewers" {
   source = "./modules/group"
 
