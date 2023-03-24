@@ -9,6 +9,7 @@ locals {
         module.group--admins.id,
         module.group--editors.id,
         module.group--viewers.id,
+        module.group--argocd-admins.id,
       ]
       department = "IT"
     }
@@ -20,6 +21,7 @@ locals {
       group_ids = [
         module.group--editors.id,
         module.group--viewers.id,
+        module.group--argocd-viewers.id,
       ]
       department = "Support"
     }

@@ -27,3 +27,19 @@ module "group--viewers" {
     module.client--bar.roles["viewer"].id,
   ]
 }
+
+module "group--argocd-admins" {
+  source = "./modules/group"
+
+  realm_id = keycloak_realm.example.id
+  name     = "argocd-admins"
+  role_ids = []
+}
+
+module "group--argocd-viewers" {
+  source = "./modules/group"
+
+  realm_id = keycloak_realm.example.id
+  name     = "argocd-viewers"
+  role_ids = []
+}
