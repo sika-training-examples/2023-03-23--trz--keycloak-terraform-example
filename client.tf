@@ -1,3 +1,18 @@
+module "client--example" {
+  source = "./modules/client"
+
+  realm_id      = keycloak_realm.example.id
+  client_id     = "example"
+  client_secret = ""
+  access_type   = "PUBLIC"
+  roles = [
+    "administrator",
+    "uzivatel",
+    "editor",
+    "viewer",
+  ]
+}
+
 module "client--foo" {
   source = "./modules/client"
 

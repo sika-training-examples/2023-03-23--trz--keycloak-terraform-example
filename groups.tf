@@ -4,6 +4,10 @@ module "group--admins" {
   realm_id = keycloak_realm.example.id
   name     = "admins"
   role_ids = [
+    module.client--example.roles["administrator"].id,
+    module.client--example.roles["editor"].id,
+    module.client--example.roles["uzivatel"].id,
+    module.client--example.roles["viewer"].id,
     module.client--foo.roles["administrator"].id,
     module.client--bar.roles["editor"].id,
   ]
@@ -23,6 +27,8 @@ module "group--viewers" {
   realm_id = keycloak_realm.example.id
   name     = "viewers"
   role_ids = [
+    module.client--example.roles["uzivatel"].id,
+    module.client--example.roles["viewer"].id,
     module.client--foo.roles["uzivatel"].id,
     module.client--bar.roles["viewer"].id,
   ]
