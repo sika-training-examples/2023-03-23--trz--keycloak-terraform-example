@@ -6,7 +6,7 @@ module "client--foo" {
   client_secret = ""
   access_type   = "PUBLIC"
   roles = [
-    "admininstrator",
+    "administrator",
     "uzivatel",
   ]
 }

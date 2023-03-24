@@ -4,7 +4,7 @@ module "group--admins" {
   realm_id = keycloak_realm.example.id
   name     = "admins"
   role_ids = [
-    module.client--foo.roles["admininstrator"].id,
+    module.client--foo.roles["administrator"].id,
     module.client--bar.roles["editor"].id,
   ]
 }
