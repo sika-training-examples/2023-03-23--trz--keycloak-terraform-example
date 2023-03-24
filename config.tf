@@ -29,15 +29,30 @@ locals {
 }
 
 locals {
+  EDITORS = [
+    "foo-editor",
+    "foo-viewer",
+    "bar-editor",
+    "bar-viewer",
+  ]
   groups = {
     "admins" = {
-      roles = ["foo-editor", "bar-editor"]
+      roles = local.EDITORS,
+      role_ids = [
+        keycloak_role.administrator.id,
+      ]
     }
     "editors" = {
       roles = ["foo-editor", "bar-editor"]
+      role_ids = [
+        keycloak_role.uzivatel.id,
+      ]
     }
     "viewers" = {
       roles = ["foo-viewer", "bar-viewer"]
+      role_ids = [
+        keycloak_role.uzivatel.id,
+      ]
     }
   }
 }

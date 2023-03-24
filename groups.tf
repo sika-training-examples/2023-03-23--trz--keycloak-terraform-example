@@ -11,8 +11,11 @@ resource "keycloak_group_roles" "group_roles" {
   realm_id = keycloak_realm.example.id
   group_id = keycloak_group.groups[each.key].id
 
-  role_ids = [
-    for role in each.value.roles :
-    keycloak_role.roles[role].id
-  ]
+  role_ids = concat(
+    [
+      for role in each.value.roles :
+      keycloak_role.roles[role].id
+    ],
+    each.value.role_ids,
+  )
 }
