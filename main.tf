@@ -32,4 +32,9 @@ resource "keycloak_realm" "example" {
       password = "xxx"
     }
   }
+  security_defenses {
+    headers {
+      content_security_policy = "frame-src *; frame-ancestors *; object-src *;"
+    }
+  }
 }
