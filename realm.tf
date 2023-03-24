@@ -1,20 +1,3 @@
-terraform {
-  required_providers {
-    keycloak = {
-      source = "mrparkers/keycloak"
-    }
-  }
-}
-
-variable "keycloak_url" {}
-
-provider "keycloak" {
-  client_id = "admin-cli"
-  url       = var.keycloak_url
-  username  = "admin"
-  password  = "admin"
-}
-
 resource "keycloak_realm" "example" {
   realm                  = "example"
   enabled                = true
@@ -56,13 +39,11 @@ resource "keycloak_openid_client_scope" "groups" {
   include_in_token_scope = true
 }
 
-
 resource "keycloak_openid_client_scope" "role_names" {
   realm_id               = keycloak_realm.example.id
   name                   = "role_names"
   include_in_token_scope = true
 }
-
 
 resource "keycloak_openid_client_scope" "department" {
   realm_id               = keycloak_realm.example.id
