@@ -5,7 +5,7 @@ locals {
       first_name = "Ondrej"
       last_name  = "Sika"
       enabled    = true
-      groups     = ["admins", "editors", "viewers"]
+      groups     = ["admins", "editors", "viewers", "argocd-admins"]
       department = "IT"
     }
     "vojtech" = {
@@ -13,7 +13,7 @@ locals {
       first_name = "Vojtech"
       last_name  = "Mares"
       enabled    = true
-      groups     = ["editors", "viewers"]
+      groups     = ["editors", "viewers", "argocd-readers"]
       department = "Support"
     }
     "alice" = {
@@ -54,6 +54,12 @@ locals {
     }
     "viewers" = {
       roles = ["foo-viewer", "bar-viewer"]
+    }
+    "argocd-admins" = {
+      roles = []
+    }
+    "argocd-readers" = {
+      roles = []
     }
   }
 }

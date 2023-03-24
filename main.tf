@@ -8,7 +8,7 @@ terraform {
 
 provider "keycloak" {
   client_id = "admin-cli"
-  url       = "http://localhost:8080"
+  url       = "https://keycloak.sikademo.com"
   username  = "admin"
   password  = "admin"
 }
@@ -37,4 +37,16 @@ resource "keycloak_realm" "example" {
       content_security_policy = "frame-src *; frame-ancestors *; object-src *;"
     }
   }
+}
+
+resource "keycloak_openid_client_scope" "example_groups" {
+  realm_id               = keycloak_realm.example.id
+  name                   = "groups"
+  include_in_token_scope = true
+}
+
+resource "keycloak_openid_client_scope" "example_audience" {
+  realm_id               = keycloak_realm.example.id
+  name                   = "audience"
+  include_in_token_scope = true
 }

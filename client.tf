@@ -10,17 +10,11 @@ resource "keycloak_openid_client" "example" {
   web_origins                     = ["*"]
 }
 
-resource "keycloak_openid_client_scope" "group_names" {
-  realm_id               = keycloak_realm.example.id
-  name                   = "group_names"
-  include_in_token_scope = true
-}
-
-resource "keycloak_openid_group_membership_protocol_mapper" "group_names" {
+resource "keycloak_openid_group_membership_protocol_mapper" "example_example_groups" {
   realm_id   = keycloak_realm.example.id
   client_id  = keycloak_openid_client.example.id
-  name       = keycloak_openid_client_scope.group_names.name
-  claim_name = keycloak_openid_client_scope.group_names.name
+  name       = keycloak_openid_client_scope.example_groups.name
+  claim_name = keycloak_openid_client_scope.example_groups.name
 }
 
 resource "keycloak_openid_client_scope" "role_names" {
@@ -44,5 +38,6 @@ resource "keycloak_openid_client_default_scopes" "example" {
     "profile",
     "email",
     "roles",
+    keycloak_openid_client_scope.example_groups.name,
   ]
 }
