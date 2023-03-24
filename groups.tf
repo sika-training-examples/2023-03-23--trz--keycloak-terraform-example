@@ -1,21 +1,21 @@
-resource "keycloak_group" "groups" {
-  for_each = local.groups
+module "group--admins" {
+  source = "./modules/group"
 
   realm_id = keycloak_realm.example.id
-  name     = each.key
+  name     = "admins"
+  role_ids = [
+    module.client--foo.roles["admininstrator"].id,
+    module.client--bar.roles["editor"].id,
+  ]
 }
 
-resource "keycloak_group_roles" "group_roles" {
-  for_each = local.groups
+module "group--viewers" {
+  source = "./modules/group"
 
   realm_id = keycloak_realm.example.id
-  group_id = keycloak_group.groups[each.key].id
-
-  role_ids = concat(
-    [
-      for role in each.value.roles :
-      keycloak_role.roles[role].id
-    ],
-    each.value.role_ids,
-  )
+  name     = "viewers"
+  role_ids = [
+    module.client--foo.roles["uzivatel"].id,
+    module.client--bar.roles["viewer"].id,
+  ]
 }

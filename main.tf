@@ -33,3 +33,23 @@ resource "keycloak_realm" "example" {
     }
   }
 }
+
+resource "keycloak_openid_client_scope" "groups" {
+  realm_id               = keycloak_realm.example.id
+  name                   = "groups"
+  include_in_token_scope = true
+}
+
+
+resource "keycloak_openid_client_scope" "role_names" {
+  realm_id               = keycloak_realm.example.id
+  name                   = "role_names"
+  include_in_token_scope = true
+}
+
+
+resource "keycloak_openid_client_scope" "department" {
+  realm_id               = keycloak_realm.example.id
+  name                   = "department"
+  include_in_token_scope = true
+}

@@ -26,8 +26,5 @@ resource "keycloak_user_groups" "user_groups" {
   realm_id = keycloak_realm.example.id
   user_id  = keycloak_user.users[each.key].id
 
-  group_ids = [
-    for group in each.value.groups :
-    keycloak_group.groups[group].id
-  ]
+  group_ids = each.value.group_ids
 }
