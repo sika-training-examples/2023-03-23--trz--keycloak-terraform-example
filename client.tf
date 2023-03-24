@@ -34,3 +34,12 @@ module "client--oauth2_proxy" {
   roles         = []
 }
 
+module "client--argocd" {
+  source = "./modules/client"
+
+  realm_id      = keycloak_realm.example.id
+  client_id     = "argocd"
+  client_secret = "example"
+  access_type   = "CONFIDENTIAL"
+  roles         = []
+}
