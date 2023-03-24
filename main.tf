@@ -53,3 +53,9 @@ resource "keycloak_openid_client_scope" "department" {
   name                   = "department"
   include_in_token_scope = true
 }
+
+resource "keycloak_openid_client_scope" "audience" {
+  realm_id               = keycloak_realm.example.id
+  name                   = "audience"
+  include_in_token_scope = true
+}

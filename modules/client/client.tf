@@ -55,6 +55,13 @@ resource "keycloak_openid_user_realm_role_protocol_mapper" "role_names" {
   multivalued = true
 }
 
+resource "keycloak_openid_audience_protocol_mapper" "audience" {
+  realm_id                 = var.realm_id
+  client_id                = keycloak_openid_client.this.id
+  name                     = "audience"
+  included_client_audience = keycloak_openid_client.this.client_id
+}
+
 resource "keycloak_openid_client_default_scopes" "this" {
   realm_id  = var.realm_id
   client_id = keycloak_openid_client.this.id

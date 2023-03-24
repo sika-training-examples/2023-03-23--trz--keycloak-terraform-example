@@ -24,3 +24,13 @@ module "client--bar" {
   ]
 }
 
+module "client--oauth2_proxy" {
+  source = "./modules/client"
+
+  realm_id      = keycloak_realm.example.id
+  client_id     = "oauth2_proxy"
+  client_secret = "example"
+  access_type   = "CONFIDENTIAL"
+  roles         = []
+}
+
